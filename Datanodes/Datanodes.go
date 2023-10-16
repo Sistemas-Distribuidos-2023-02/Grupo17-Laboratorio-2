@@ -47,7 +47,7 @@ func ObtenerIDNombre(mensaje string) (int, string){
 func main(){
 
 	//Coneccion con el servidor.
-	//SE DEBE DIFERENCIAR LOS DATANODES POR EL PUERTO CONCHETUMAREEEEE 50052 SERA NODO 1 Y 50053 NODO 2
+	//SE DEBE DIFERENCIAR LOS DATANODES POR EL PUERTO 50052 SERA NODO 1 Y 50053 NODO 2
 	listener, err := net.Listen("tcp", "localhost:50052")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
