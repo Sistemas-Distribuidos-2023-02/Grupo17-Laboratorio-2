@@ -1,0 +1,33 @@
+# Use the official Golang image as the base image
+FROM golang:1.18
+
+# Set the working directory to the root of your application
+WORKDIR /app/OMS
+
+# Copy your Go source code and necessary files
+COPY OMS.go ./
+COPY DATA.txt ./
+COPY ../go.mod ./
+COPY ../go.sum ./
+COPY ../proto /app/OMS/proto
+
+ARG onu_server=localhost
+ARG onu_port=50051
+ARG data_node1_server=localhost
+ARG data_node1_port = 50052
+ARG data_node2_server=localhost
+ARG data_node2_port = 50053
+
+ENV onu_server = $oms_server
+ENV onu_port=$oms_port
+ENV data_node1_server = $data_node1_server_server
+ENV data_node1_port=$data_node1_port 
+ENV data_node2_server = $data_node2_port
+ENV data_node2_port=$data_node2_port
+
+EXPOSE 5005
+EXPOSE 50051
+# Download Go module dependencies
+RUN go mod download
+    
+CMD go run OMS.go

@@ -1,0 +1,28 @@
+# Use the official Golang image as the base image
+FROM golang:1.18
+
+# Set the working directory to the root of your application
+WORKDIR /app/Continentes
+
+# Copy your Go source code and necessary files
+COPY Continentes.go ./
+COPY names.txt ./
+COPY ../go.mod ./
+COPY ../go.sum ./
+COPY ../proto /app/Continentes/proto
+
+ARG oms_server=localhost
+ARG oms_port=5005
+
+ENV oms_server = $oms_server
+ENV oms_port=$oms_port
+
+EXPOSE 50051
+# Download Go module dependencies
+RUN go mod download
+    
+CMD go run Regionales.go
+
+
+# Command to run your application when a container is started
+
