@@ -1,120 +1,21 @@
-1 Nodo 1 Muerta
-2 Nodo 2  Muerta
-3 Nodo 2  Muerta
-4 Nodo 1 Muerta
-5 Nodo 1 Infectada
-6 Nodo 1 Muerta
-7 Nodo 1 Muerta
-8 Nodo 1 Infectada
-9 Nodo 1 Infectada
-10 Nodo 1 Infectada
-11 Nodo 2  Infectada
-12 Nodo 1 Infectada
-13 Nodo 2  Infectada
-14 Nodo 1 Infectada
-15 Nodo 2  Muerta
-16 Nodo 1 Infectada
-17 Nodo 2  Infectada
-18 Nodo 1 Infectada
-19 Nodo 1 Muerta
-20 Nodo 1 Infectada
-21 Nodo 2  Infectada
-22 Nodo 1 Infectada
-23 Nodo 1 Muerta
-24 Nodo 1 Infectada
-25 Nodo 2  Muerta
-26 Nodo 1 Infectada
-27 Nodo 2  Infectada
-28 Nodo 1 Infectada
-29 Nodo 2  Infectada
-30 Nodo 1 Muerta
-31 Nodo 1 Muerta
-32 Nodo 2  Muerta
-33 Nodo 1 Muerta
-34 Nodo 1 Muerta
-35 Nodo 2  Infectada
-36 Nodo 1 Infectada
-37 Nodo 2  Muerta
-38 Nodo 1 Muerta
-39 Nodo 2  Infectada
-40 Nodo 1 Muerta
-41 Nodo 1 Infectada
-42 Nodo 1 Infectada
-43 Nodo 2  Muerta
-44 Nodo 2  Infectada
-45 Nodo 1 Infectada
-46 Nodo 1 Muerta
-47 Nodo 1 Muerta
-48 Nodo 1 Infectada
-49 Nodo 2  Muerta
-50 Nodo 1 Infectada
-51 Nodo 1 Muerta
-52 Nodo 1 Muerta
-53 Nodo 1 Infectada
-54 Nodo 1 Muerta
-55 Nodo 2  Infectada
-56 Nodo 1 Muerta
-57 Nodo 1 Infectada
-58 Nodo 1 Infectada
-59 Nodo 1 Infectada
-60 Nodo 1 Infectada
-61 Nodo 1 Infectada
-62 Nodo 1 Infectada
-63 Nodo 1 Infectada
-64 Nodo 1 Muerta
-65 Nodo 2  Muerta
-66 Nodo 1 Infectada
-67 Nodo 1 Infectada
-68 Nodo 1 Infectada
-69 Nodo 1 Infectada
-70 Nodo 1 Infectada
-71 Nodo 1 Infectada
-72 Nodo 1 Muerta
-73 Nodo 2  Infectada
-74 Nodo 2  Infectada
-75 Nodo 1 Muerta
-76 Nodo 2  Infectada
-77 Nodo 1 Infectada
-78 Nodo 1 Infectada
-79 Nodo 1 Infectada
-80 Nodo 2  Infectada
-81 Nodo 1 Muerta
-82 Nodo 1 Infectada
-83 Nodo 2  Infectada
-84 Nodo 1 Infectada
-85 Nodo 2  Infectada
-86 Nodo 1 Infectada
-87 Nodo 1 Infectada
-88 Nodo 1 Infectada
-89 Nodo 1 Infectada
-90 Nodo 1 Muerta
-91 Nodo 1 Muerta
-92 Nodo 2  Muerta
-93 Nodo 1 Muerta
-94 Nodo 1 Infectada
-95 Nodo 2  Infectada
-96 Nodo 2  Infectada
-97 Nodo 1 Muerta
-98 Nodo 1 Infectada
-99 Nodo 1 Muerta
-100 Nodo 1 Infectada
-101 Nodo 1 Infectada
-102 Nodo 1 Infectada
-103 Nodo 1 Infectada
-104 Nodo 1 Muerta
-105 Nodo 2  Muerta
-106 Nodo 1 Muerta
-107 Nodo 1 Infectada
-108 Nodo 1 Infectada
-109 Nodo 1 Infectada
-110 Nodo 2  Infectada
-111 Nodo 2  Infectada
-112 Nodo 1 Infectada
-113 Nodo 2  Muerta
-114 Nodo 1 Muerta
-115 Nodo 1 Infectada
-116 Nodo 1 Infectada
-117 Nodo 1 Muerta
-118 Nodo 1 Infectada
-119 Nodo 1 Muerta
-120 Nodo 2  Infectada
+1 1 Muerta
+2 1 Muerta
+3 2 Infectada
+4 1 Infectada
+5 1 Infectada
+6 2 Infectada
+7 1 Muerta
+8 1 Muerta
+9 1 Infectada
+10 1 Infectada
+11 1 Infectada
+12 2 Muerta
+13 2 Infectada
+14 1 Infectada
+15 1 Muerta
+16 2 Infectada
+17 1 Muerta
+18 1 Muerta
+19 1 Infectada
+20 1 Muerta
+21 2 Muerta

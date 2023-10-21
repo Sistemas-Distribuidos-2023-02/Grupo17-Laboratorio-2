@@ -9,7 +9,11 @@ import (
 	"fmt"
 	"strconv"
 	"os"
+	"context"
+	"sync"
 )
+
+var mu sync.Mutex
 
 var personas map[int]string
 var archivo *os.File
@@ -19,17 +23,43 @@ type server struct {
 }
 
 func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) error {
-	for {
+		mu.Lock()
 		request, _ := steam.Recv()
-		log.Printf("Mensaje recibido: %s", request.Message)
 		id, nombre := ObtenerIDNombre(request.Message)
-		personas[id] = nombre
-		fmt.Println(personas[id])
-		archivo.WriteString( fmt.Sprint(id) + " " + nombre + "\n")
-		fmt.Println(personas)
-	}
-}
+		if nombre == "P" {
+			fmt.Println("La ONU a preguntado por los datos de: " + strconv.Itoa(id))
+			
+			MandarDataOMS(id)
+			
+		}else {
+			
+			personas[id] = nombre
+			log.Printf("Mensaje recibido: %s", request.Message)
+			
+			fmt.Println(personas[id])
+			archivo.WriteString( strconv.Itoa(id) + " " + nombre + "\n")
+		}
+		mu.Unlock()
+		return nil
+}	
 
+func MandarDataOMS(id int) {
+	conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
+			if err != nil {
+				log.Fatalf("No se pudo conectar al servidor: %v", err)
+			}
+	client := pb.NewOMSClient(conn)
+    stream, err := client.NotifyBidirectional(context.Background())
+    if err != nil {
+        log.Fatalf("Error al abrir el flujo bidireccional: %v", err)
+    }
+	mensaje := &pb.Request{Message: (personas[id] + "\nData")}
+	print("\n Se ha enviado el mensaje: ",mensaje.Message , "\n")
+    if err := stream.Send(mensaje); err != nil {
+        log.Fatalf("Error al enviar mensaje: %v", err)
+    }
+
+}
 //Sacar id y nombre de la persona del mensaje
 func ObtenerIDNombre(mensaje string) (int, string){
     // Dividir el mensaje en espacios en blanco
