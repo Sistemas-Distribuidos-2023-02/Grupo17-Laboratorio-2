@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package OMS;
+
+
+service OMS {
+    rpc NotifyBidirectional(stream Request) returns (stream Response);
+}
+
+message Request {
+    string message = 1;
+}
+
+message Response {
+    string reply = 1; // Cambio a tipo de campo string
+}

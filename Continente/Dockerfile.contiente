@@ -7,14 +7,14 @@ WORKDIR /app/Continente
 # Copy your Go source code and necessary files
 COPY Continente.go ./
 COPY names.txt ./
-COPY ../go.mod ./
-COPY ../go.sum ./
-COPY ../proto /app/Continente/proto
+COPY go.mod ./
+COPY go.sum ./
+COPY proto /app/Continente/proto
 
 ARG oms_server=localhost
 ARG oms_port=50051
 
-ENV oms_server = $oms_server
+ENV oms_server=$oms_server
 ENV oms_port=$oms_port
 
 EXPOSE 50051

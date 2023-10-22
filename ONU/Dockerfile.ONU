@@ -6,14 +6,14 @@ WORKDIR /app/ONU
 
 # Copy your Go source code and necessary files
 COPY ONU.go ./
-COPY ../go.mod ./
-COPY ../go.sum ./
-COPY ../proto /app/ONU/proto
+COPY go.mod ./
+COPY go.sum ./
+COPY proto /app/ONU/proto
 
 ARG oms_server=localhost
 ARG oms_port=50051
 
-ENV oms_server = $oms_server
+ENV oms_server=$oms_server
 ENV oms_port=$oms_port
 
 EXPOSE 50051

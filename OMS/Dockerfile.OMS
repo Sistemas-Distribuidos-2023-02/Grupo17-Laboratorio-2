@@ -6,22 +6,22 @@ WORKDIR /app/OMS
 
 # Copy your Go source code and necessary files
 COPY OMS.go ./
-COPY ../go.mod ./
-COPY ../go.sum ./
-COPY ../proto /app/OMS/proto
+COPY go.mod ./
+COPY go.sum ./
+COPY proto /app/OMS/proto
 
 ARG onu_server=localhost
 ARG onu_port=50070
 ARG data_node1_server=localhost
-ARG data_node1_port = 50052
+ARG data_node1_port=50052
 ARG data_node2_server=localhost
-ARG data_node2_port = 50053
+ARG data_node2_port=50053
 
-ENV onu_server = $oms_server
+ENV onu_server=$oms_server
 ENV onu_port=$oms_port
-ENV data_node1_server = $data_node1_server_server
+ENV data_node1_server=$data_node1_server_server
 ENV data_node1_port=$data_node1_port 
-ENV data_node2_server = $data_node2_port
+ENV data_node2_server=$data_node2_port
 ENV data_node2_port=$data_node2_port
 
 EXPOSE 50070
