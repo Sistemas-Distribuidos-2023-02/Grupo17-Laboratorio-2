@@ -5,60 +5,46 @@ services:
       context: ./ONU 
       dockerfile: Dockerfile.ONU
       args:
-        rmq_server: localhost
-        rmq_port: 5672
+        oms_server: localhost
+        oms_port: 50051
     volumes:
-      - ./Valve:/app/Valve
+      - ./ONU:/app/ONU
     network_mode: "host"
-  regionales1:
+
+  continente:
     build:
-      context: ./Regionales 
-      dockerfile: Dockerfile.regionales
+      context: ./Continentes
+      dockerfile: Dockerfile.continente
       args:
-        valve_server: localhost
-        rmq_server: localhost
-        rmq_port: 5672
-        region_name: America
+        oms_server: localhost
+        oms_port: 50051
     volumes:
-      - ./Regionales:/app/Regionales
+      - ./Continentes:/app/Continentes
     network_mode: "host"
-  
-  regionales2:
+
+  oms:
     build:
-      context: ./Regionales 
-      dockerfile: Dockerfile.regionales
+      context: ./OMS
+      dockerfile: Dockerfile.OMS
       args:
-        valve_server: localhost
-        rmq_server: localhost
-        rmq_port: 5672
-        region_name: Europa
+        onu_server: localhost
+        onu_port: 50070
+        data_node1_server: localhost
+        data_node1_port: 50052
+        data_node2_server: localhost
+        data_node2_port: 50053
     volumes:
-      - ./Regionales:/app/Regionales
+      - ./OMS:/app/OMS
     network_mode: "host"
-      
-  regionales3:
+
+  datanode:
     build:
-      context: ./Regionales 
-      dockerfile: Dockerfile.regionales
+      context: ./Datanodes
+      dockerfile: Dockerfile.Datanodes
       args:
-        valve_server: localhost
-        rmq_server: localhost
-        rmq_port: 5672
-        region_name: Asia
+        oms_server: localhost
+        oms_port: 50051
     volumes:
-      - ./Regionales:/app/Regionales
-    network_mode: "host"
-  
-  regionales4:
-    build:
-      context: ./Regionales 
-      dockerfile: Dockerfile.regionales
-      args:
-        valve_server: localhost
-        rmq_server: localhost
-        rmq_port: 5672
-        region_name: Oceania
-    volumes:
-      - ./Regionales:/app/Regionales
+      - ./Datanodes:/app/Datanodes
     network_mode: "host"
   

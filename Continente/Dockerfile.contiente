@@ -12,7 +12,7 @@ COPY ../go.sum ./
 COPY ../proto /app/Continentes/proto
 
 ARG oms_server=localhost
-ARG oms_port=5005
+ARG oms_port=50051
 
 ENV oms_server = $oms_server
 ENV oms_port=$oms_port

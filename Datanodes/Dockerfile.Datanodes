@@ -2,13 +2,13 @@
 FROM golang:1.18
 
 # Set the working directory to the root of your application
-WORKDIR /app/ONU
+WORKDIR /app/Continentes
 
 # Copy your Go source code and necessary files
-COPY ONU.go ./
+COPY Datanodes.go ./
 COPY ../go.mod ./
 COPY ../go.sum ./
-COPY ../proto /app/ONU/proto
+COPY ../proto /app/Datanodes/proto
 
 ARG oms_server=localhost
 ARG oms_port=50051
@@ -17,11 +17,12 @@ ENV oms_server = $oms_server
 ENV oms_port=$oms_port
 
 EXPOSE 50051
-EXPOSE 50070
+#cambiar a 50053 si es el datanode 2
+EXPOSE 50052 
 # Download Go module dependencies
 RUN go mod download
     
-CMD go run ONU.go
-
+CMD go run Regionales.go
 
 # Command to run your application when a container is started
+
