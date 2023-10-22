@@ -30,7 +30,7 @@ func MandarDataOMS(Persona string, conn *grpc.ClientConn) {
 
 func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) error {
 		request, _ := steam.Recv()
-		fmt.Println( request.Message + "\n")
+		fmt.Println( request.Message)
 	
 	return nil
 }
@@ -54,7 +54,6 @@ func Preguntar (){
 			PersonaBuscada = "1"
 		} else {
 			PersonaBuscada = "2"
-			return
 		}
 		MandarDataOMS(PersonaBuscada, conn)
 	}

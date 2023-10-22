@@ -28,7 +28,6 @@ func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) err
 		id, nombre := ObtenerIDNombre(request.Message)
 		if nombre == "P" {
 			fmt.Println("La ONU a preguntado por los datos de: " + strconv.Itoa(id))
-			
 			MandarDataOMS(id)
 			
 		}else {

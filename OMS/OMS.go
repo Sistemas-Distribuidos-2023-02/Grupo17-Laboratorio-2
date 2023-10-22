@@ -11,10 +11,8 @@ import (
 	"context"
 	"bufio"
 	"strconv"
-	"sync"
 )
 
-var mu sync.Mutex
 var archivo *os.File
 var id int
 var Total int
@@ -29,10 +27,13 @@ func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) err
 		if err != nil {
 			return err
 		}
-		fmt.Println(request.Message)
 		// 1 = Muertos /  2 = Infectados
 		if request.Message == "1" || request.Message == "2" {
-			fmt.Println("La ONU a preguntado por los datos de: " + request.Message)
+			if request.Message == "1" {
+				fmt.Println("La ONU a preguntado por los datos de Muertos.")
+			}else {
+				fmt.Println("La ONU a preguntado por los datos de Infectaods.")
+			}
 			// Abre el archivo
 			file, err := os.Open("Data.txt")
 			if err != nil {
@@ -55,26 +56,27 @@ func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) err
 				if request.Message == "1" && estado == "Muerta" {
 					Total +=1
 					if nodo == "1" {
-						fmt.Println("Se debe preguntar al nodo 1")
+						fmt.Println("Se debe preguntar al nodo 1 por el id: " + id)
 						id , _ := strconv.Atoi(id)
-						go MandarDataDatanodes(id , 1, "Preguntar")
+						MandarDataDatanodes(id , 1, "Preguntar")
 
 					}else {
-						Total -=1
-						fmt.Println("Se debe preguntar al nodo 2")
+						//#CAMBIAR ESTO CUANDO FUNCIONE TODO
+						fmt.Println("Se debe preguntar al nodo 2 por el id: " + id)
 						//MandarDataDatanodes(0, 2, "Preguntar")
+						Total -=1
 
 					}
 				} else if request.Message == "2" && estado == "Infectada"{
 					Total +=1
-					fmt.Printf("ID: %s, NODO: %s, ESTADO: %s\n", id, nodo, estado)
 					if nodo == "1" {
-						fmt.Println("Se debe preguntar al nodo 1")
+						fmt.Println("Se debe preguntar al nodo 1 por el id: " + id)
 						id , _ := strconv.Atoi(id)
 						MandarDataDatanodes(id, 1, "Preguntar")
 
 					}else {
-						fmt.Println("Se debe preguntar al nodo 2")
+						Total -=1
+						fmt.Println("Se debe preguntar al nodo 2 por el id: " + id)
 						//MandarDataDatanodes(0, 2, "Preguntar")
 					}
 				}
@@ -82,19 +84,18 @@ func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) err
 			}	
 			return nil
 		}
-		
 		estado,nombre := ObtenerEstado(request.Message)
 		if estado == "Data" {
 			Total -=1
 			fmt.Println("Los Datanodes nos diero el nombre de : " + nombre)
 			DataEntregarONU = append(DataEntregarONU, nombre)
-			fmt.Println(Total)
 			if Total == 0 {
-				fmt.Println("Le respondimos a la ONU")
-				for i := 0; i < len(DataEntregarONU); i++ {
+				largo := len(DataEntregarONU)
+				for i := 0; i < largo; i++ {
 					MandarDataONU()
 					DataEntregarONU = DataEntregarONU[1:]
 				}
+				fmt.Println("Respondimos los datos de la ONU.")
 				DataEntregarONU = nil
 			}
 			return nil 
@@ -103,9 +104,11 @@ func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) err
 		// Se decide a que nodo se debe enviar el mensaje.
 		//Se guarda en el archivo DATA.txt el ID  NODO ESTADO 
 		if inicialApellido <= 77{
+			fmt.Println("Se manda al nodo 1 el mensaje: " + fmt.Sprint(id) +" " +request.Message )
 			archivo.WriteString( fmt.Sprint(id) + " 1 " +  estado + "\n")
 			MandarDataDatanodes(id, 1, nombre)
 		}else {
+			fmt.Println("Se manda al nodo 2 el mensaje: " + fmt.Sprint(id)  +" "+request.Message)
 			archivo.WriteString( fmt.Sprint(id) + " 2 " + estado + "\n")
 			//MandarDataDatanodes(id, 2, nombre)
 		}
