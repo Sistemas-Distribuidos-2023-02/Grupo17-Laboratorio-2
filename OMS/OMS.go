@@ -61,10 +61,9 @@ func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) err
 						MandarDataDatanodes(id , 1, "Preguntar")
 
 					}else {
-						//#CAMBIAR ESTO CUANDO FUNCIONE TODO
 						fmt.Println("Se debe preguntar al nodo 2 por el id: " + id)
-						//MandarDataDatanodes(0, 2, "Preguntar")
-						Total -=1
+						id , _ := strconv.Atoi(id)
+						MandarDataDatanodes(id , 2, "Preguntar")
 
 					}
 				} else if request.Message == "2" && estado == "Infectada"{
@@ -77,7 +76,8 @@ func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) err
 					}else {
 						Total -=1
 						fmt.Println("Se debe preguntar al nodo 2 por el id: " + id)
-						//MandarDataDatanodes(0, 2, "Preguntar")
+						id , _ := strconv.Atoi(id)
+						MandarDataDatanodes(id, 2, "Preguntar")
 					}
 				}
 			}
@@ -110,7 +110,7 @@ func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) err
 		}else {
 			fmt.Println("Se manda al nodo 2 el mensaje: " + fmt.Sprint(id)  +" "+request.Message)
 			archivo.WriteString( fmt.Sprint(id) + " 2 " + estado + "\n")
-			//MandarDataDatanodes(id, 2, nombre)
+			MandarDataDatanodes(id, 2, nombre)
 		}
 		id+=1
 		
