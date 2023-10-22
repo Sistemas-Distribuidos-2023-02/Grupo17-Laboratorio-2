@@ -2,7 +2,7 @@
 FROM golang:1.18
 
 # Set the working directory to the root of your application
-WORKDIR /app/Continentes
+WORKDIR /app/Datanodes
 
 # Copy your Go source code and necessary files
 COPY Datanodes.go ./
@@ -22,7 +22,7 @@ EXPOSE 50052
 # Download Go module dependencies
 RUN go mod download
     
-CMD go run Regionales.go
+CMD go run Datanodes.go
 
 # Command to run your application when a container is started
 

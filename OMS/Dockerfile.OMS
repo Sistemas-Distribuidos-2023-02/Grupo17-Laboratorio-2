@@ -6,7 +6,6 @@ WORKDIR /app/OMS
 
 # Copy your Go source code and necessary files
 COPY OMS.go ./
-COPY DATA.txt ./
 COPY ../go.mod ./
 COPY ../go.sum ./
 COPY ../proto /app/OMS/proto

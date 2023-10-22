@@ -2,14 +2,14 @@
 FROM golang:1.18
 
 # Set the working directory to the root of your application
-WORKDIR /app/Continentes
+WORKDIR /app/Continente
 
 # Copy your Go source code and necessary files
-COPY Continentes.go ./
+COPY Continente.go ./
 COPY names.txt ./
 COPY ../go.mod ./
 COPY ../go.sum ./
-COPY ../proto /app/Continentes/proto
+COPY ../proto /app/Continente/proto
 
 ARG oms_server=localhost
 ARG oms_port=50051
@@ -21,7 +21,7 @@ EXPOSE 50051
 # Download Go module dependencies
 RUN go mod download
     
-CMD go run Regionales.go
+CMD go run Contiente.go
 
 
 # Command to run your application when a container is started

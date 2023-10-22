@@ -13,13 +13,13 @@ services:
 
   continente:
     build:
-      context: ./Continentes
+      context: ./Continente
       dockerfile: Dockerfile.continente
       args:
         oms_server: localhost
         oms_port: 50051
     volumes:
-      - ./Continentes:/app/Continentes
+      - ./Continente:/app/Continente
     network_mode: "host"
 
   oms:
