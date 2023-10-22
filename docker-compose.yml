@@ -45,7 +45,7 @@ services:
         oms_server: dist065.inf.santiago.usm.cl
         oms_port: 50051
     volumes:
-      - ./Datanode1:/app/Datanode1
+      - ./Datanodes:/app/Datanode1
     network_mode: "host"
   
   datanode2:
@@ -56,5 +56,5 @@ services:
         oms_server: dist065.inf.santiago.usm.cl
         oms_port: 50051
     volumes:
-      - ./Datanode2:/app/Datanode2
+      - ./Datanodes:/app/Datanode2
     network_mode: "host"

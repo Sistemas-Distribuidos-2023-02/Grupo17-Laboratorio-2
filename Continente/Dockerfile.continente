@@ -21,7 +21,7 @@ EXPOSE 50051
 # Download Go module dependencies
 RUN go mod download
     
-CMD go run Contiente.go
+CMD go run Continente.go
 
 
 # Command to run your application when a container is started
