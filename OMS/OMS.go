@@ -174,7 +174,7 @@ func main(){
 	data_nodes[1] = os.Getenv("data_nada1_server") + ":" + os.Getenv("data_nada1_port");
 	data_nodes[2] = os.Getenv("data_node2_server") + ":" + os.Getenv("data_node2_port"); 
 	
-	listener, err := net.Listen("tcp", os.Getenv("oms_server") + ":50051")
+	listener, err := net.Listen("tcp", "localhost:50051")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
