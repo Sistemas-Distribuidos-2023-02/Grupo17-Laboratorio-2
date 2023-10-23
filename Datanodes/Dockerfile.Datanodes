@@ -12,9 +12,11 @@ COPY proto /app/Datanodes/proto
 
 ARG oms_server=localhost
 ARG oms_port=50051
+ARG data_node_port=50052
 
 ENV oms_server=$oms_server
 ENV oms_port=$oms_port
+ENV data_node_port=$data_node_port
 
 EXPOSE 50051
 #cambiar a 50053 si es el datanode 2

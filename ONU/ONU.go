@@ -36,7 +36,7 @@ func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) err
 }
 
 func Preguntar (){
-	conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
+	conn, err := grpc.Dial(os.Getenv("oms_server") + ":" + os.Getenv("oms_port"), grpc.WithInsecure())
     if err != nil {
         log.Fatalf("No se pudo conectar al servidor: %v", err)
     }

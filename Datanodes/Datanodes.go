@@ -43,7 +43,7 @@ func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) err
 }	
 
 func MandarDataOMS(id int) {
-	conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
+	conn, err := grpc.Dial(os.Getenv("oms_server") + ":" + os.Getenv("oms_port"), grpc.WithInsecure())
 			if err != nil {
 				log.Fatalf("No se pudo conectar al servidor: %v", err)
 			}
@@ -77,7 +77,7 @@ func main(){
 
 	//Coneccion con el servidor.
 	//SE DEBE DIFERENCIAR LOS DATANODES POR EL PUERTO 50052 SERA NODO 1 Y 50053 NODO 2
-	listener, err := net.Listen("tcp", "localhost:50052")
+	listener, err := net.Listen("tcp", "localhost:" + os.Getenv("data_node_port"))
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
