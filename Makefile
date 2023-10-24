@@ -1,5 +1,5 @@
 docker-onu:
-	docker-compose -f docker-compose.yml up onu
+	docker-compose -f docker-compose.yml up -d onu
 
 docker-continente:
 	docker-compose -f docker-compose.yml up continente
