@@ -21,7 +21,7 @@ EXPOSE 50070
 # Download Go module dependencies
 RUN go mod download
     
-CMD go run ONU.go
+ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 
 # Command to run your application when a container is started
