@@ -37,7 +37,7 @@ func (s *server) NotifyBidirectional(steam pb.OMS_NotifyBidirectionalServer) err
 				fmt.Println("La ONU a preguntado por los datos de Infectaods.")
 			}
 			// Abre el archivo
-			file, err := os.Open("Data.txt")
+			file, err := os.Open("DATA.txt")
 			if err != nil {
 				fmt.Println("Error al abrir el archivo:", err)
 				return err
