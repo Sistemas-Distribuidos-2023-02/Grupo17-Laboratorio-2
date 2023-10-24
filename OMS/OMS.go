@@ -171,8 +171,8 @@ func ObtenerEstado(Persona string)(string , string){
 
 func main(){
 	//Coneccion con el servidor.
-	data_nodes[1] = os.Getenv("data_nada1_server") + ":" + os.Getenv("data_nada1_port");
-	data_nodes[2] = os.Getenv("data_node2_server") + ":" + os.Getenv("data_node2_port"); 
+	data_nodes[1] = os.Getenv("data_node1_server") + ":" + os.Getenv("data_node1_port")
+	data_nodes[2] = os.Getenv("data_node2_server") + ":" + os.Getenv("data_node2_port") 
 	
 	listener, err := net.Listen("tcp", "localhost:50051")
 	if err != nil {
