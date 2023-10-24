@@ -170,6 +170,7 @@ func ObtenerEstado(Persona string)(string , string){
 }
 
 func main(){
+	data_nodes = make(map[int]string)
 	//Coneccion con el servidor.
 	data_nodes[1] = os.Getenv("data_node1_server") + ":" + os.Getenv("data_node1_port")
 	data_nodes[2] = os.Getenv("data_node2_server") + ":" + os.Getenv("data_node2_port") 
